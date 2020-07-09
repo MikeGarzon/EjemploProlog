@@ -10,6 +10,7 @@ progenitorde('Nelson','Andres').
 progenitorde('Maicol','Karen').
 progenitorde('Karen','Ramon').
 progenitorde('Santiago','Stiven').
+progenitorde('Pepe','Pablo').
 
 hijode(A,B) :- progenitorde(B,A).
 abuelode(A,B) :- progenitorde(A,C), progenitorde(C,B).
