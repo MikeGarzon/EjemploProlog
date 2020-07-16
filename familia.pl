@@ -17,9 +17,18 @@ abuelode(A,B) :- progenitorde(A,C), progenitorde(C,B).
 bisabuelo(A,B) :- progenitorde(A,C), abuelode(C,B).
 hermanode(A,B) :- progenitorde(C,A), progenitorde(C,B), A \== B.
 tiode(A,B) :- progenitorde(C,B), hermanode(A,C).
+primo(X,Y):-progenitorde(Z,X),progenitorde(W,Y),hermanode(Z,W).
+sobrino(A,B):- tiode(B,A).
+nieto(X,Y):-abuelode(Y,X).
+bisnieto(X,Y) :- bisabuelo(Y,X).
+
 familiarde(A,B) :- progenitorde(A,B).
 familiarde(A,B) :- abuelode(A,B).
 familiarde(A,B) :- hermanode(A,B).
+familiarde(A,B) :- tiode(A,B).
+
+familiaresde(X,L):- findall(B,familiarde(X,B),L).
+
 
 casado(A,B) :- progenitorde(A,C) , progenitorde(B,C), A \== B.
-esfeliz(A,B) :- casado(A,B).
+esfeliz(X) :- casado(X,_). 
