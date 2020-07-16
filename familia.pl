@@ -23,9 +23,14 @@ nieto(X,Y):-abuelode(Y,X).
 bisnieto(X,Y) :- bisabuelo(Y,X).
 
 familiarde(A,B) :- progenitorde(A,B).
+familiarde(A,B) :- hijode(A,B).
 familiarde(A,B) :- abuelode(A,B).
 familiarde(A,B) :- hermanode(A,B).
 familiarde(A,B) :- tiode(A,B).
+familiarde(A,B) :- primo(A,B).
+familiarde(A,B) :- sobrino(A,B).
+familiarde(A,B) :- nieto(A,B).
+familiarde(A,B) :- bisnieto(A,B).
 
 familiaresde(X,L):- findall(B,familiarde(X,B),L).
 
